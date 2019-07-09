@@ -1,0 +1,73 @@
+/* Add application styles & imports to this file! */
+@import url("https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" );
+
+body{
+  margin: 50px;
+}
+
+h1{
+  color: #710684;
+  font-family:  "arial";
+  text-align: center; 
+  font-size: 33px;
+  line-break: 41px;    
+}
+
+h2{
+  color: #fff;
+  font-family:  "arial";
+  text-align: center; 
+  font-size: 33px;
+  line-break: 41px;    
+}
+
+.minPensionDiv{
+  border-radius: 10px;
+  background-color: #710684;
+}
+
+.minPensionInnerDiv{
+  border-radius: 10px;
+  background-color: #710684;
+  margin: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  
+}
+
+input{
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.button{
+  background-color: #2488f8;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 10px
+}
+.submitButton{
+  background-color: #2488f8;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  position: absolute;
+  right: 50px
+}
+
+
+

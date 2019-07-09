@@ -1,0 +1,29 @@
+
+
+<form [formGroup]="pensionForm">
+
+  <div class="minPensionDiv" formArrayName="PensionInformation">
+      <h2>Pensions Uppgifter</h2>
+    <div *ngFor="let item of pensionPoints.controls; let pointIndex=index" [formGroupName]="pointIndex">
+    <label>
+      <input placeholder="Ålder" formControlName="age" />
+      <input placeholder="Lön" formControlName="salary" />
+      <input placeholder="Planderad Pension" formControlName="pensionAge" />
+      <input placeholder="Kapital (kr)" formControlName="kapital" />
+      <input placeholder="Trad (kr/mån)" formControlName="trad" />
+      <input placeholder="Uttags Period" formControlName="duration" />
+      <input placeholder="Risk (%)" formControlName="risk" />
+      <input placeholder="Förväntad Avkastning (%)" formControlName="expReturn" />
+    </label>
+    <button class="button" type="button" (click)="deletePensionPoint(pointIndex)">Delete</button>
+    </div>
+    <button class="button" type="button" (click)="addPensionPoint()">Add</button>
+    <!--<button class="submitButton" type="button" (click)="exportData()">Kör</button>-->
+    <app-compute [pensionForm]="pensionForm" (eventClicked)="testPrint($event)" ></app-compute>
+  </div>
+  <!--<app-plot-pension [data]="PlotData"></app-plot-pension>-->
+  <div id="plotDiv" class="minPensionDiv"><div class="minPensionInnerDiv"  [chart]="chart"></div>  </div>
+</form>
+
+
+{{ this.pensionForm.value | json }}
