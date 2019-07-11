@@ -11,8 +11,6 @@ import * as Highcharts from 'highcharts';
 
 
 
-
-
 @Component({
   selector: 'app-pension-form',
   templateUrl: './pension-form.component.html',
@@ -62,6 +60,9 @@ testPrint(data: any) {
         type: 'line',
         data: data.hogtUtfall,
         pointStart: data.time[0]
+    },{
+      type: 'area',
+      data: [[1,2,3],[3,3,10]]
     }]
   })
 }
