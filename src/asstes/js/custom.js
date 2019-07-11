@@ -59,7 +59,7 @@ export function linePlot(name, xdata, ydata){
     }
   }
 
-  export function utbetalningPerManad(data,dataUtbetalning,age,planedPensionAge,lifeExp){
+  export function utbetalningPerManad(data,dataUtbetalning,age,planedPensionAge,lifeExp,trad){
     var j;
     var T1 = planedPensionAge-age;
     var T2 = lifeExp-age;
@@ -71,23 +71,30 @@ export function linePlot(name, xdata, ydata){
       dataUtbetalning.hogtUtfall[j] = 0;
       dataUtbetalning.lagtUtfall[j] = 0;
     }
+    if (trad==0){
+      for (j = T1; j < T2; j++){
+          if (temp_DT != 0){
+            dataUtbetalning.M[j] = dataUtbetalning.M[j] + (data.M[j]/temp_DT)/12;
 
-    for (j = T1; j < T2; j++){
-        if (temp_DT != 0){
-          dataUtbetalning.M[j] = dataUtbetalning.M[j] + (data.M[j]/temp_DT)/12;
+            dataUtbetalning.hogtUtfall[j] = dataUtbetalning.hogtUtfall[j] + (data.hogtUtfall[j]/temp_DT)/12;
 
-          dataUtbetalning.hogtUtfall[j] = dataUtbetalning.hogtUtfall[j] + (data.hogtUtfall[j]/temp_DT)/12;
+            dataUtbetalning.lagtUtfall[j] = dataUtbetalning.lagtUtfall[j] + (data.lagtUtfall[j]/temp_DT)/12;
 
-          dataUtbetalning.lagtUtfall[j] = dataUtbetalning.lagtUtfall[j] + (data.lagtUtfall[j]/temp_DT)/12;
+            temp_DT--; 
+          }else{
+            dataUtbetalning.M[j] = dataUtbetalning.M[j];
 
-          temp_DT--; 
-        }else{
-          dataUtbetalning.M[j] = dataUtbetalning.M[j];
+            dataUtbetalning.hogtUtfall[j] = dataUtbetalning.hogtUtfall[j];
 
-          dataUtbetalning.hogtUtfall[j] = dataUtbetalning.hogtUtfall[j];
-
-          dataUtbetalning.lagtUtfall[j] = dataUtbetalning.lagtUtfall[j];
-        }
+            dataUtbetalning.lagtUtfall[j] = dataUtbetalning.lagtUtfall[j];
+          }
+      }
+    } else{
+      for (j = T1; j < T1+ data.DT; j++){
+        dataUtbetalning.M[j] = trad;
+        dataUtbetalning.hogtUtfall[j] = trad;
+        dataUtbetalning.lagtUtfall[j] = trad;
+      }
     }
   }
 

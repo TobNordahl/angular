@@ -39,7 +39,7 @@ export class ComputeComponent implements OnInit {
     var helpUtbetalningsData = [];
 
     var plotData = {M: [], V: [], lagtUtfall: [], hogtUtfall: [], time: []};
-    var dataUtbetalning = {M: [], hogtUtfall: [], lagtUtfall: [], time: [], trad: undefined};
+    var dataUtbetalning = {M: [], hogtUtfall: [], lagtUtfall: [], time: []};
 
     var i = 0;
 
@@ -51,7 +51,7 @@ export class ComputeComponent implements OnInit {
     var salary = parseFloat(this.pensionForm.value.PensionInformation[i].salary);
     var planedPensionAge = parseFloat(this.pensionForm.value.PensionInformation[i].pensionAge);
     var kapital = parseFloat(this.pensionForm.value.PensionInformation[i].kapital);
-    var trad = parseFloat(this.pensionForm.value.PensionInformation[i].trad);
+    var trad = this.pensionForm.value.PensionInformation[i].trad;
     var duration = parseFloat(this.pensionForm.value.PensionInformation[i].duration);
     var risk = parseFloat(this.pensionForm.value.PensionInformation[i].risk);
     var expReturn = parseFloat(this.pensionForm.value.PensionInformation[i].expReturn); 
@@ -59,14 +59,26 @@ export class ComputeComponent implements OnInit {
     var j;
     var data = {M: kapital, V: 0, lagtUtfall: kapital, hogtUtfall: kapital}
     var dep = 0;
-
     helpdata[i].DT = duration;
+    if (trad == ""){
+      trad = 0;
+      iterateTime(salary,data,helpdata[i],risk,expReturn,age,planedPensionAge,duration,lifeExp);
+    }else{
+      for(j = 0; j < lifeExp-age; j++){
+        helpdata[i].M[j] = 0;
+        helpdata[i].hogtUtfall[j] = 0;
+        helpdata[i].lagtUtfall[j] = 0;
+        helpdata[i].time[j] = age+j;
+      }
+    }
+    trad = parseInt(trad);
 
-    iterateTime(salary,data,helpdata[i],risk,expReturn,age,planedPensionAge,duration,lifeExp);
 
-    helpUtbetalningsData[i] = {M: [], hogtUtfall: [], lagtUtfall: [], time: [], trad: undefined};
 
-    utbetalningPerManad(helpdata[i], helpUtbetalningsData[i], age, planedPensionAge, lifeExp);
+
+    helpUtbetalningsData[i] = {M: [], hogtUtfall: [], lagtUtfall: [], time: []};
+
+    utbetalningPerManad(helpdata[i], helpUtbetalningsData[i], age, planedPensionAge, lifeExp, trad);
    }
     
 
@@ -77,6 +89,7 @@ export class ComputeComponent implements OnInit {
      plotData.hogtUtfall[j] = 0;
      plotData.lagtUtfall[j] = 0;
 
+     dataUtbetalning.time[j] = age+j;
      dataUtbetalning.M[j] = 0;
      dataUtbetalning.hogtUtfall[j] = 0;
      dataUtbetalning.lagtUtfall[j] = 0;
