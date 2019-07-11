@@ -48,9 +48,6 @@ export function linePlot(name, xdata, ydata){
         data.lagtUtfall=0;
         data.V=0;
       }
-      //console.log(j)
-      analytic(withdraw
-      ,data,risk,expReturn,0,duration) 
     }
         
     for (j = (planedPensionAge-age)+duration; j<lifeExp-age; j++ ){
@@ -62,27 +59,35 @@ export function linePlot(name, xdata, ydata){
     }
   }
 
-  export function utbetalningPerManad(data,dataUtbetalning,age,planedPensionAge,lifeExp,length){
+  export function utbetalningPerManad(data,dataUtbetalning,age,planedPensionAge,lifeExp){
     var j;
-    var i;
     var T1 = planedPensionAge-age;
     var T2 = lifeExp-age;
-    var temp_DT = [];
-    for (i = 0; i < length; i++){
-      temp_DT[i] = data[i].DT;
+    var temp_DT;
+    temp_DT = data.DT;
+    for (j = 0; j<lifeExp-age; j++){
+      dataUtbetalning.time[j] = age+j;
+      dataUtbetalning.M[j] = 0;
+      dataUtbetalning.hogtUtfall[j] = 0;
+      dataUtbetalning.lagtUtfall[j] = 0;
     }
-    console.log(temp_DT)
 
     for (j = T1; j < T2; j++){
-      dataUtbetalning.M[j] = 0;
-      for (i = 0; i < length; i++){
-        if (temp_DT[i] != 0){
-          dataUtbetalning.M[j] = dataUtbetalning.M[j] + data[i].M[j]/temp_DT[i];
-          temp_DT[i]--; 
+        if (temp_DT != 0){
+          dataUtbetalning.M[j] = dataUtbetalning.M[j] + (data.M[j]/temp_DT)/12;
+
+          dataUtbetalning.hogtUtfall[j] = dataUtbetalning.hogtUtfall[j] + (data.hogtUtfall[j]/temp_DT)/12;
+
+          dataUtbetalning.lagtUtfall[j] = dataUtbetalning.lagtUtfall[j] + (data.lagtUtfall[j]/temp_DT)/12;
+
+          temp_DT--; 
         }else{
-          dataUtbetalning.M[j]= dataUtbetalning.M[j];
+          dataUtbetalning.M[j] = dataUtbetalning.M[j];
+
+          dataUtbetalning.hogtUtfall[j] = dataUtbetalning.hogtUtfall[j];
+
+          dataUtbetalning.lagtUtfall[j] = dataUtbetalning.lagtUtfall[j];
         }
-      }
     }
   }
 

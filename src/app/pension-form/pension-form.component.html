@@ -19,10 +19,11 @@
     </div>
     <button class="button" type="button" (click)="addPensionPoint()">Add</button>
     <!--<button class="submitButton" type="button" (click)="exportData()">Kör</button>-->
-    <app-compute [pensionForm]="pensionForm" (eventClicked)="testPrint($event)" ></app-compute>
+    <app-compute [pensionForm]="pensionForm" (eventClicked)="testPrint($event)" (eventClicked_2)="testPrint_2($event)"  ></app-compute>
   </div>
   <!--<app-plot-pension [data]="PlotData"></app-plot-pension>-->
   <div id="plotDiv" class="minPensionDiv"><div class="minPensionInnerDiv"  [chart]="chart"></div>  </div>
+  <div id="plotDiv" class="minPensionDiv"><div class="minPensionInnerDiv"  [chart]="chart_2"></div>  </div>
 </form>
 
 

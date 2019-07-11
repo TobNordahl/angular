@@ -20,7 +20,8 @@ export class ComputeComponent implements OnInit {
 
   @Input() pensionForm: FormGroup;
   constructor(private fb: FormBuilder) { }
-  @Output() eventClicked = new EventEmitter<PlotData>();
+  @Output() eventClicked = new EventEmitter<any>();
+  @Output() eventClicked_2 = new EventEmitter<any>();
 
   ngOnInit() {
 
@@ -35,9 +36,10 @@ export class ComputeComponent implements OnInit {
     var pensionlength = this.pensionForm.value.PensionInformation.length;
 
     var helpdata = [];
+    var helpUtbetalningsData = [];
 
-    var plotData = {M: [], V: [], lagtUtfall: [], hogtUtfall: [], time: []}
-    
+    var plotData = {M: [], V: [], lagtUtfall: [], hogtUtfall: [], time: []};
+    var dataUtbetalning = {M: [], hogtUtfall: [], lagtUtfall: [], time: [], trad: undefined};
 
     var i = 0;
 
@@ -60,27 +62,41 @@ export class ComputeComponent implements OnInit {
 
     helpdata[i].DT = duration;
 
-    iterateTime(salary,data,helpdata[i],risk,expReturn,age,planedPensionAge,duration,lifeExp)
+    iterateTime(salary,data,helpdata[i],risk,expReturn,age,planedPensionAge,duration,lifeExp);
+
+    helpUtbetalningsData[i] = {M: [], hogtUtfall: [], lagtUtfall: [], time: [], trad: undefined};
+
+    utbetalningPerManad(helpdata[i], helpUtbetalningsData[i], age, planedPensionAge, lifeExp);
    }
+    
+
    //console.log(plotData.hogtUtfall)
    for (j = 0; j < (lifeExp-age); j++){
      plotData.time[j] = age+j;
      plotData.M[j] = 0;
      plotData.hogtUtfall[j] = 0;
      plotData.lagtUtfall[j] = 0;
+
+     dataUtbetalning.M[j] = 0;
+     dataUtbetalning.hogtUtfall[j] = 0;
+     dataUtbetalning.lagtUtfall[j] = 0;
+
      for (i = 0; i<pensionlength; i++){
        //console.log(i);
        plotData.M[j] = plotData.M[j]+helpdata[i].M[j];
+       dataUtbetalning.M[j] = dataUtbetalning.M[j] + helpUtbetalningsData[i].M[j];
 
        plotData.hogtUtfall[j] = plotData.hogtUtfall[j]+helpdata[i].hogtUtfall[j];
+       dataUtbetalning.hogtUtfall[j] = dataUtbetalning.hogtUtfall[j] + helpUtbetalningsData[i].hogtUtfall[j];
 
        plotData.lagtUtfall[j] = plotData.lagtUtfall[j]+helpdata[i].lagtUtfall[j];
+       dataUtbetalning.lagtUtfall[j] = dataUtbetalning.lagtUtfall[j] + helpUtbetalningsData[i].lagtUtfall[j];
      }
    }
-   var dataUtbetalning = {M: [], hogtUtfall: [], lagtUtfall: []};
-   utbetalningPerManad(helpdata, dataUtbetalning, age, planedPensionAge, lifeExp, pensionlength)
+
    console.log(dataUtbetalning)
    this.eventClicked.emit(plotData);
+   this.eventClicked_2.emit(dataUtbetalning);
 
   }
 

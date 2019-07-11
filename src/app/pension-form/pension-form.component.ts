@@ -25,9 +25,10 @@ export class PensionFormComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   @Input() PensionForm;
-  @Output() eventPressed = new EventEmitter<PlotData>();
+  @Output() eventPressed = new EventEmitter<any>();
   highcharts = Highcharts;
   chart: Chart;
+  chart_2: Chart;
   
   
   ngOnInit() {
@@ -40,14 +41,34 @@ export class PensionFormComponent implements OnInit {
   }
 testPrint(data: any) {
    console.log("Nu körs testPrint() från pension-form")
-   //console.log(data.time);
-   //console.log(data.M);
-   //console.log(data.lagtUtfall);
-   //console.log(data.hogtUtfall);
-   //console.log(data.V);
-
-  //document.getElementById("plotDiv").innerHTML=data.V
   this.chart = new Chart({
+    title: {
+      text: 'Pension'
+    },
+
+    series: [{
+        name: 'Väntad',
+        type: 'line',
+        data: data.M,
+        pointStart: data.time[0]
+        
+    },{
+        name: 'Låg',
+        type: 'line',
+        data: data.lagtUtfall,
+        pointStart: data.time[0]
+    },{ 
+        name: 'Hög',
+        type: 'line',
+        data: data.hogtUtfall,
+        pointStart: data.time[0]
+    }]
+  })
+}
+
+testPrint_2(data: any) {
+   console.log("Nu körs testPrint() från pension-form")
+  this.chart_2 = new Chart({
     title: {
       text: 'Pension'
     },
