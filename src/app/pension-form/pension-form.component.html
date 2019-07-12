@@ -1,13 +1,14 @@
 
 
 <form [formGroup]="pensionForm">
-
   <div class="minPensionDiv" formArrayName="PensionInformation">
       <h2>Pensions Uppgifter</h2>
+
     <div *ngFor="let item of pensionPoints.controls; let pointIndex=index" [formGroupName]="pointIndex">
     <label>
       <input placeholder="Ålder" formControlName="age" />
       <input placeholder="Lön" formControlName="salary" />
+      <input placeholder="Sparande (kr/mån)" formControlName="deposit" />
       <input placeholder="Planderad Pension" formControlName="pensionAge" />
       <input placeholder="Kapital (kr)" formControlName="kapital" />
       <input placeholder="Trad (kr/mån)" formControlName="trad" />

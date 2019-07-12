@@ -65,6 +65,10 @@ export function linePlot(name, xdata, ydata){
     var T2 = lifeExp-age;
     var temp_DT;
     temp_DT = data.DT;
+    var sumM = 0;
+    var sumHog = 0;
+    var sumLag = 0;
+
     for (j = 0; j<lifeExp-age; j++){
       dataUtbetalning.time[j] = age+j;
       dataUtbetalning.M[j] = 0;
@@ -75,10 +79,13 @@ export function linePlot(name, xdata, ydata){
       for (j = T1; j < T2; j++){
           if (temp_DT != 0){
             dataUtbetalning.M[j] = dataUtbetalning.M[j] + (data.M[j]/temp_DT)/12;
+            sumM = sumM + dataUtbetalning.M[j];
 
             dataUtbetalning.hogtUtfall[j] = dataUtbetalning.hogtUtfall[j] + (data.hogtUtfall[j]/temp_DT)/12;
+            sumHog = sumHog + dataUtbetalning.hogtUtfall[j];
 
             dataUtbetalning.lagtUtfall[j] = dataUtbetalning.lagtUtfall[j] + (data.lagtUtfall[j]/temp_DT)/12;
+            sumLag = sumLag + dataUtbetalning.lagtUtfall[j];
 
             temp_DT--; 
           }else{
@@ -88,6 +95,13 @@ export function linePlot(name, xdata, ydata){
 
             dataUtbetalning.lagtUtfall[j] = dataUtbetalning.lagtUtfall[j];
           }
+      }
+      for (j = T1; j < T1+ data.DT; j++){
+        dataUtbetalning.M[j] = sumM/data.DT;
+
+        dataUtbetalning.hogtUtfall[j] = sumHog/data.DT;
+
+        dataUtbetalning.lagtUtfall[j] = sumLag/data.DT;
       }
     } else{
       for (j = T1; j < T1+ data.DT; j++){

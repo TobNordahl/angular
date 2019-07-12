@@ -2,6 +2,7 @@ export class PensionInformation{
   id: number;
   age: number;
   salary: number;
+  deposit: number;
   pensionAge: number;
   duration: number;
   kapital: number;

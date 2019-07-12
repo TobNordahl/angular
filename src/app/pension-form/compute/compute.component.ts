@@ -34,21 +34,23 @@ export class ComputeComponent implements OnInit {
     
     console.log("compute() körs i compute-component")
     var pensionlength = this.pensionForm.value.PensionInformation.length;
-
+    
     var helpdata = [];
     var helpUtbetalningsData = [];
 
     var plotData = {M: [], V: [], lagtUtfall: [], hogtUtfall: [], time: []};
     var dataUtbetalning = {M: [], hogtUtfall: [], lagtUtfall: [], time: []};
+    var salaryVector = [];
 
     var i = 0;
 
-    for (i = 0; i < pensionlength; i++){
+  for (i = 0; i < pensionlength; i++){
 
     helpdata[i] = {M: [], V: [], lagtUtfall: [], hogtUtfall: [], time: [], DT: undefined}
 
     var age = parseFloat(this.pensionForm.value.PensionInformation[i].age);
-    var salary = parseFloat(this.pensionForm.value.PensionInformation[i].salary);
+    var deposit = parseFloat(this.pensionForm.value.PensionInformation[i].deposit);
+    var salary = this.pensionForm.value.PensionInformation[i].salary;
     var planedPensionAge = parseFloat(this.pensionForm.value.PensionInformation[i].pensionAge);
     var kapital = parseFloat(this.pensionForm.value.PensionInformation[i].kapital);
     var trad = this.pensionForm.value.PensionInformation[i].trad;
@@ -56,13 +58,22 @@ export class ComputeComponent implements OnInit {
     var risk = parseFloat(this.pensionForm.value.PensionInformation[i].risk);
     var expReturn = parseFloat(this.pensionForm.value.PensionInformation[i].expReturn); 
     var lifeExp = 90;
+  
+
+
+    if (salary == ""){
+      salary = 0;
+    }
+    salaryVector[i] = parseFloat(salary);
+    console.log(salaryVector)
+  
     var j;
     var data = {M: kapital, V: 0, lagtUtfall: kapital, hogtUtfall: kapital}
     var dep = 0;
     helpdata[i].DT = duration;
     if (trad == ""){
       trad = 0;
-      iterateTime(salary,data,helpdata[i],risk,expReturn,age,planedPensionAge,duration,lifeExp);
+      iterateTime(deposit,data,helpdata[i],risk,expReturn,age,planedPensionAge,duration,lifeExp);
     }else{
       for(j = 0; j < lifeExp-age; j++){
         helpdata[i].M[j] = 0;
@@ -81,7 +92,7 @@ export class ComputeComponent implements OnInit {
     utbetalningPerManad(helpdata[i], helpUtbetalningsData[i], age, planedPensionAge, lifeExp, trad);
    }
     
-
+   salary = Math.max.apply(null,salaryVector)
    //console.log(plotData.hogtUtfall)
    for (j = 0; j < (lifeExp-age); j++){
      plotData.time[j] = age+j;
@@ -105,6 +116,12 @@ export class ComputeComponent implements OnInit {
        plotData.lagtUtfall[j] = plotData.lagtUtfall[j]+helpdata[i].lagtUtfall[j];
        dataUtbetalning.lagtUtfall[j] = dataUtbetalning.lagtUtfall[j] + helpUtbetalningsData[i].lagtUtfall[j];
      }
+   }
+   for (j = 0; j < (planedPensionAge-age); j++){
+     dataUtbetalning.M[j] = salary;
+     dataUtbetalning.hogtUtfall[j] = salary;
+     dataUtbetalning.lagtUtfall[j] = salary;
+
    }
 
    console.log(dataUtbetalning)

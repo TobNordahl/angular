@@ -28,10 +28,9 @@ export class PensionFormComponent implements OnInit {
   chart: Chart;
   chart_2: Chart;
   
-  
   ngOnInit() {
         this.pensionForm = this.fb.group({
-      PensionInformation: this.fb.array([this.fb.group({age:'', salary:'', pensionAge:'', kapital:'', trad:'', duration:'', risk:'', expReturn:''})])
+      PensionInformation: this.fb.array([this.fb.group({age:'', salary:'', deposit: '', pensionAge:'', kapital:'', trad:'', duration:'', risk:'', expReturn:''})])
     })
   }
     get pensionPoints() {
@@ -60,9 +59,6 @@ testPrint(data: any) {
         type: 'line',
         data: data.hogtUtfall,
         pointStart: data.time[0]
-    },{
-      type: 'area',
-      data: [[1,2,3],[3,3,10]]
     }]
   })
 }
@@ -100,7 +96,7 @@ testPrint_2(data: any) {
   }
 
   addPensionPoint(){
-    this.pensionPoints.push(this.fb.group({age:'', salary:'',pensionAge:'', kapital:'', trad:'', duration:'', risk:'', expReturn:''}));
+    this.pensionPoints.push(this.fb.group({age:'', salary:'', deposit: '',pensionAge:'', kapital:'', trad:'', duration:'', risk:'', expReturn:''}));
   }
 
   deletePensionPoint(index) {
