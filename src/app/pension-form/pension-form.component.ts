@@ -97,12 +97,12 @@ testPrint_2(data: any) {
         pointStart: data.time[0]
         
     },{
-        name: 'Låg',
+        name: 'Hög',
         type: 'line',
         data: data2,
         pointStart: data.time[0]
     },{ 
-        name: 'Hög',
+        name: 'Låg',
         type: 'line',
         data: data3,
         pointStart: data.time[0]
