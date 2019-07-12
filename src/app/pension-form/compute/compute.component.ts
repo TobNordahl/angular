@@ -73,7 +73,7 @@ export class ComputeComponent implements OnInit {
     helpdata[i].DT = duration;
     if (trad == ""){
       trad = 0;
-      iterateTime(deposit,data,helpdata[i],risk,expReturn,age,planedPensionAge,duration,lifeExp);
+      iterateTime(deposit*12,data,helpdata[i],risk,expReturn,age,planedPensionAge,duration,lifeExp);
     }else{
       for(j = 0; j < lifeExp-age; j++){
         helpdata[i].M[j] = 0;
