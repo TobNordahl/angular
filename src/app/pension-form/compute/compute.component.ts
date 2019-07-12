@@ -65,7 +65,7 @@ export class ComputeComponent implements OnInit {
       salary = 0;
     }
     salaryVector[i] = parseFloat(salary);
-    console.log(salaryVector)
+    //console.log(salaryVector)
   
     var j;
     var data = {M: kapital, V: 0, lagtUtfall: kapital, hogtUtfall: kapital}
@@ -124,7 +124,7 @@ export class ComputeComponent implements OnInit {
 
    }
 
-   console.log(dataUtbetalning)
+   //console.log(dataUtbetalning)
    this.eventClicked.emit(plotData);
    this.eventClicked_2.emit(dataUtbetalning);
 
