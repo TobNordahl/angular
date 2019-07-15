@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { ChartModule } from 'angular-highcharts';
 
+
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import { TopBarComponent } from './top-bar/top-bar.component';

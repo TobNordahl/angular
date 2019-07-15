@@ -6,7 +6,10 @@ import { linePlot } from '../../asstes/js/custom'
 import { Chart, } from 'angular-highcharts';
 import { first } from 'rxjs/operators';
 import { Options } from 'highcharts';
+
 import * as Highcharts from 'highcharts';
+import more from 'highcharts/highcharts-more';
+more(Highcharts);
 
 
 
@@ -38,76 +41,72 @@ export class PensionFormComponent implements OnInit {
   }
 testPrint(data: any) {
   var isChecked = document.getElementById("myCheckbox") as HTMLInputElement;
-  if (isChecked.checked){
-    var data1 = data.M;
-    var data2 = data.hogtUtfall;
-    var data3 = data.lagtUtfall
-  }else{
-    var data1 = data.M;
-    var data2 = data.M;
-    var data3 = data.M
+
+  var range = [];
+  
+  for (var i = 0; i < data.M.length; i++){
+    range[i] = [data.hogtUtfall[i],data.lagtUtfall[i]];
+  
   }
-   console.log("Nu körs testPrint() från pension-form")
-  this.chart = new Chart({
+  if ( isChecked.checked){
+    this.chart = new Chart({
     title: {
       text: 'Pension'
     },
-
     series: [{
-        name: 'Väntad',
-        type: 'line',
-        data: data1,
-        pointStart: data.time[0]
-        
+      type: 'arearange',
+      data: range,
     },{
-        name: 'Hög',
-        type: 'line',
-        data: data2,
-        pointStart: data.time[0]
-    },{ 
-        name: 'Låg',
-        type: 'line',
-        data: data3,
-        pointStart: data.time[0]
+      type: 'line',
+      data: data.M,
     }]
-  })
+    })
+  } else{
+    this.chart = new Chart({
+      title: {
+      text: 'Pension'
+    },
+      series: [{
+        type: 'line',
+        data: data.M,
+      }]
+    })
+  }
 }
+
 
 testPrint_2(data: any) {
    console.log("Nu körs testPrint() från pension-form")
-  var isChecked = document.getElementById("myCheckbox") as HTMLInputElement;
-  if (isChecked.checked){
-    var data1 = data.M;
-    var data2 = data.hogtUtfall;
-    var data3 = data.lagtUtfall
-  }else{
-    var data1 = data.M;
-    var data2 = data.M;
-    var data3 = data.M
+  var isChecked = document.getElementById("myCheckbox") as HTMLInputElement;  var range = [];
+  
+  for (var i = 0; i < data.M.length; i++){
+    range[i] = [data.hogtUtfall[i],data.lagtUtfall[i]];
+  
   }
-  this.chart_2 = new Chart({
+  if ( isChecked.checked){
+    this.chart_2 = new Chart({
     title: {
       text: 'Pension'
     },
-
     series: [{
-        name: 'Väntad',
-        type: 'line',
-        data: data1,
-        pointStart: data.time[0]
-        
+      type: 'arearange',
+      data: range,
     },{
-        name: 'Hög',
-        type: 'line',
-        data: data2,
-        pointStart: data.time[0]
-    },{ 
-        name: 'Låg',
-        type: 'line',
-        data: data3,
-        pointStart: data.time[0]
+      type: 'line',
+      data: data.M,
     }]
-  })
+    })
+  } else{
+    this.chart_2 = new Chart({
+      title: {
+      text: 'Pension'
+    },
+      series: [{
+        type: 'line',
+        data: data.M,
+      }]
+    })
+  }
 }
 
 
