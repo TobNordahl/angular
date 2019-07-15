@@ -48,7 +48,7 @@ testPrint(data: any) {
     range[i] = [data.hogtUtfall[i],data.lagtUtfall[i]];
   
   }
-  if ( isChecked.checked){
+  if ( isChecked.checked ){
     this.chart = new Chart({
     title: {
       text: 'Pension'
@@ -56,10 +56,15 @@ testPrint(data: any) {
     series: [{
       type: 'arearange',
       data: range,
+      pointStart: data.time[0],
     },{
       type: 'line',
       data: data.M,
-    }]
+      pointStart: data.time[0],
+    }],
+    tooltip: {
+      followPointer: true,
+    }
     })
   } else{
     this.chart = new Chart({
@@ -69,6 +74,7 @@ testPrint(data: any) {
       series: [{
         type: 'line',
         data: data.M,
+        pointStart: data.time[0],
       }]
     })
   }
@@ -83,7 +89,7 @@ testPrint_2(data: any) {
     range[i] = [data.hogtUtfall[i],data.lagtUtfall[i]];
   
   }
-  if ( isChecked.checked){
+  if ( isChecked.checked ){
     this.chart_2 = new Chart({
     title: {
       text: 'Pension'
@@ -91,9 +97,11 @@ testPrint_2(data: any) {
     series: [{
       type: 'arearange',
       data: range,
+      pointStart: data.time[0],
     },{
       type: 'line',
       data: data.M,
+      pointStart: data.time[0],
     }]
     })
   } else{
@@ -104,6 +112,7 @@ testPrint_2(data: any) {
       series: [{
         type: 'line',
         data: data.M,
+        pointStart: data.time[0],
       }]
     })
   }
