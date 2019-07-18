@@ -27,8 +27,19 @@
     <app-compute [pensionForm]="pensionForm" (eventClicked)="testPrint($event)" (eventClicked_2)="testPrint_2($event)"  ></app-compute>
   </div>
   <!--<app-plot-pension [data]="PlotData"></app-plot-pension>-->
-  <div id="plotDiv" class="minPensionDiv"><div class="minPensionInnerDiv"  [chart]="chart"></div>  </div>
-  <div id="plotDiv" class="minPensionDiv"><div class="minPensionInnerDiv"  [chart]="chart_2"></div>  </div>
+  <div id="plotDiv" class="minPensionDiv"> <div class="minPensionInnerDiv"  [chart]="chart"></div> </div>
+
+  <div id="plotDiv" class="minPensionDiv"> <div class="minPensionInnerDiv"  [chart]="chart_2" ></div> </div>
+
+  <div class="minPensionDiv">
+    <h2>Infomation</h2>
+    <ul>
+      <li>Spridningen visar hösta  och lägsta väntade utbetalningen med 90% säkerhet.</li>
+      <li>Det är 90% säkerhet att hamna inom intervallet.</li>
+      <li>Lönetillväxt och inflation är ej inkluderat i beräkningarna.</li>
+    </ul>    
+  </div>
+
 </form>
 
 

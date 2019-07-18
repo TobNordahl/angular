@@ -6,7 +6,7 @@ body{
 }
 
 h1{
-  color: #710684;
+  color: #62127c;
   font-family:  "arial";
   text-align: center; 
   font-size: 33px;
@@ -22,19 +22,22 @@ h2{
 }
 
 .minPensionDiv{
+  margin: 0px;
   border-radius: 10px;
-  background-color: #710684;
+  background-color: #62127c;
 }
 
 .minPensionInnerDiv{
   border-radius: 10px;
-  background-color: #710684;
+  background-color: #62127c;
   margin: 15px;
-  margin-top: 15px;
   margin-bottom: 15px;
-  
 }
 
+li{
+  color:#fff;
+  margin-bottom: 10px;
+}
 input{
     border-radius: 5px;
     margin: 10px;
