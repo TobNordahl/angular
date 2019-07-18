@@ -75,7 +75,7 @@ testPrint(data: any) {
       text: 'Pension'
     },
       series: [{
-        type: 'line',
+        type: 'area',
         data: data.M,
         pointStart: data.time[0],
       }]
@@ -113,7 +113,7 @@ testPrint_2(data: any) {
       text: 'Pension'
     },
       series: [{
-        type: 'line',
+        type: 'area',
         data: data.M,
         pointStart: data.time[0],
       }]
