@@ -60,7 +60,7 @@ export class ComputeComponent implements OnInit {
     var lifeExp = 90;
   
 
-
+    
     if (salary == ""){
       salary = 0;
     }

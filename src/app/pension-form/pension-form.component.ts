@@ -68,6 +68,9 @@ testPrint(data: any) {
     })
   } else{
     this.chart = new Chart({
+      chart: {
+        margin: [100,100,100,100],
+      },
       title: {
       text: 'Pension'
     },
