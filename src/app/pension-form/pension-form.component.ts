@@ -86,9 +86,11 @@ testPrint(data: any) {
 
 testPrint_2(data: any) {
    console.log("Nu körs testPrint() från pension-form")
+   
   var isChecked = document.getElementById("myCheckbox") as HTMLInputElement;  var range = [];
-  
-  for (var i = 0; i < data.M.length; i++){
+  var i;
+  var length = data.total.length;
+  for ( i = 0; i < data.M.length; i++){
     range[i] = [data.hogtUtfall[i],data.lagtUtfall[i]];
   
   }
@@ -108,7 +110,30 @@ testPrint_2(data: any) {
     }]
     })
   } else{
-    this.chart_2 = new Chart({
+      this.chart_2 = new Chart({
+      plotOptions:{
+        area:{
+          stacking: 'normal'
+        }
+      },
+      title: {
+      text: 'Pension'
+      }
+      })
+      for ( i = 0; i < length; i++){
+        this.chart_2.addSeries({
+            type: 'area',
+            data: data.total[i].M,
+            pointStart: data.time[0],
+        },true,true)
+      }
+
+    /*this.chart_2 = new Chart({
+      plotOptions:{
+        area:{
+          stacking: 'normal'
+        }
+      },
       title: {
       text: 'Pension'
     },
@@ -117,7 +142,7 @@ testPrint_2(data: any) {
         data: data.M,
         pointStart: data.time[0],
       }]
-    })
+    })*/
   }
 }
 

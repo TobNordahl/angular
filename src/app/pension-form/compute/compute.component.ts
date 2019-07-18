@@ -39,7 +39,7 @@ export class ComputeComponent implements OnInit {
     var helpUtbetalningsData = [];
 
     var plotData = {M: [], V: [], lagtUtfall: [], hogtUtfall: [], time: []};
-    var dataUtbetalning = {M: [], hogtUtfall: [], lagtUtfall: [], time: []};
+    var dataUtbetalning = {M: [], hogtUtfall: [], lagtUtfall: [], time: [], total: undefined};
     var salaryVector = [];
 
     var i = 0;
@@ -60,7 +60,7 @@ export class ComputeComponent implements OnInit {
     var lifeExp = 90;
   
 
-    
+
     if (salary == ""){
       salary = 0;
     }
@@ -118,12 +118,15 @@ export class ComputeComponent implements OnInit {
      }
    }
    for (j = 0; j < (planedPensionAge-age); j++){
+     helpUtbetalningsData[0].M[j] = salary;
+     helpUtbetalningsData[0].lagtUtfall[j] = salary;
+     helpUtbetalningsData[0].hogtUtfall[j] = salary;
      dataUtbetalning.M[j] = salary;
      dataUtbetalning.hogtUtfall[j] = salary;
      dataUtbetalning.lagtUtfall[j] = salary;
 
    }
-
+    dataUtbetalning.total = helpUtbetalningsData;
    //console.log(dataUtbetalning)
    this.eventClicked.emit(plotData);
    this.eventClicked_2.emit(dataUtbetalning);
