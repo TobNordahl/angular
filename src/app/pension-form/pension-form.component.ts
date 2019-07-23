@@ -97,7 +97,7 @@ testPrint_2(data: any) {
   if ( isChecked.checked ){
     this.chart_2 = new Chart({
     chart:{
-      backgroundColor: '#710684',
+      backgroundColor: '#fff',
     },
     title: {
       text: 'Pension'
