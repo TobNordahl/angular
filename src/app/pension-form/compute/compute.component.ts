@@ -48,27 +48,57 @@ export class ComputeComponent implements OnInit {
 
     helpdata[i] = {M: [], V: [], lagtUtfall: [], hogtUtfall: [], time: [], DT: undefined}
 
-    var age = parseFloat(this.pensionForm.value.PensionInformation[i].age);
-    var deposit = parseFloat(this.pensionForm.value.PensionInformation[i].deposit);
+    var age = this.pensionForm.value.PensionInformation[i].age;
+    var deposit = this.pensionForm.value.PensionInformation[i].deposit;
     var salary = this.pensionForm.value.PensionInformation[i].salary;
-    var planedPensionAge = parseFloat(this.pensionForm.value.PensionInformation[i].pensionAge);
+    var planedPensionAge = this.pensionForm.value.PensionInformation[i].pensionAge;
     var kapital = this.pensionForm.value.PensionInformation[i].kapital;
     var trad = this.pensionForm.value.PensionInformation[i].trad;
-    var duration = parseFloat(this.pensionForm.value.PensionInformation[i].duration);
-    var risk = parseFloat(this.pensionForm.value.PensionInformation[i].risk);
-    var expReturn = parseFloat(this.pensionForm.value.PensionInformation[i].expReturn); 
+    var duration = this.pensionForm.value.PensionInformation[i].duration;
+    var risk = this.pensionForm.value.PensionInformation[i].risk;
+    var expReturn = this.pensionForm.value.PensionInformation[i].expReturn; 
     var lifeExp = 90;
-  
+
+    if (age == ""){
+      age = 0;
+    }
+    age = parseFloat(age);
+
+    if (deposit == ""){
+      deposit = 0;
+    }
+    deposit = parseFloat(deposit);
+
+    if (planedPensionAge == ""){
+      planedPensionAge = 0;
+    }
+    parseFloat(planedPensionAge);
+
     if (kapital == ""){
       kapital = 0;
     }
-    kapital = parseFloat(kapital)
+    kapital = parseFloat(kapital);
 
     if (salary == ""){
       salary = 0;
     }
     salaryVector[i] = parseFloat(salary);
-    //console.log(salaryVector)
+
+    if (duration == ""){
+      duration = 0;
+    }
+    duration = parseFloat(duration);
+
+    if (risk == ""){
+      risk = 0;
+    }
+    risk = parseFloat(risk);
+
+    if (expReturn == ""){
+      expReturn = 0;
+    }
+    expReturn = parseFloat(expReturn);
+
   
     var j;
     var data = {M: kapital, V: 0, lagtUtfall: kapital, hogtUtfall: kapital}
