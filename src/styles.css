@@ -21,10 +21,24 @@ h2{
   line-break: 41px;    
 }
 
+
 .minPensionDiv{
   margin: 0px;
   border-radius: 10px;
   background-color: #62127c;
+}
+
+.text_whiteBG{
+  color: #402744;
+  margin: 15px;
+  size: 15;
+  row-gap: 23;
+}
+
+.textDiv{
+  margin: 0px;
+  border-radius: 0px;
+  background-color: #fff;
 }
 
 .minPensionInnerDiv{

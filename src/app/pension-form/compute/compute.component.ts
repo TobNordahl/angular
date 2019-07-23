@@ -52,14 +52,17 @@ export class ComputeComponent implements OnInit {
     var deposit = parseFloat(this.pensionForm.value.PensionInformation[i].deposit);
     var salary = this.pensionForm.value.PensionInformation[i].salary;
     var planedPensionAge = parseFloat(this.pensionForm.value.PensionInformation[i].pensionAge);
-    var kapital = parseFloat(this.pensionForm.value.PensionInformation[i].kapital);
+    var kapital = this.pensionForm.value.PensionInformation[i].kapital;
     var trad = this.pensionForm.value.PensionInformation[i].trad;
     var duration = parseFloat(this.pensionForm.value.PensionInformation[i].duration);
     var risk = parseFloat(this.pensionForm.value.PensionInformation[i].risk);
     var expReturn = parseFloat(this.pensionForm.value.PensionInformation[i].expReturn); 
     var lifeExp = 90;
   
-
+    if (kapital == ""){
+      kapital = 0;
+    }
+    kapital = parseFloat(kapital)
 
     if (salary == ""){
       salary = 0;
