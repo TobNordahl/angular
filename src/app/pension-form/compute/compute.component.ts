@@ -38,7 +38,7 @@ export class ComputeComponent implements OnInit {
     var helpdata = [];
     var helpUtbetalningsData = [];
 
-    var plotData = {M: [], V: [], lagtUtfall: [], hogtUtfall: [], time: []};
+    var plotData = {M: [], V: [], lagtUtfall: [], hogtUtfall: [], time: [], total: undefined};
     var dataUtbetalning = {M: [], hogtUtfall: [], lagtUtfall: [], time: [], total: undefined};
     var salaryVector = [];
 
@@ -160,6 +160,7 @@ export class ComputeComponent implements OnInit {
 
    }
     dataUtbetalning.total = helpUtbetalningsData;
+    plotData.total = helpdata
    //console.log(dataUtbetalning)
    this.eventClicked.emit(plotData);
    this.eventClicked_2.emit(dataUtbetalning);

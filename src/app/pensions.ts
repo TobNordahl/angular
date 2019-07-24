@@ -22,4 +22,5 @@ export class PlotData{
  hogtUtfall: any[];
  lagtUtfall: any[];
  time: any[]
+ total: any
 }
