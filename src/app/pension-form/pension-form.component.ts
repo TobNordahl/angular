@@ -66,18 +66,7 @@ testPrint(data: any) {
       followPointer: true,
     }
     })
-  } /*else{
-    this.chart = new Chart({
-      title: {
-      text: 'Pension'
-    },
-      series: [{
-        type: 'area',
-        data: data.M,
-        pointStart: data.time[0],
-      }]
-    })
-  }*/
+  }
   else{
       this.chart = new Chart({
       plotOptions:{
