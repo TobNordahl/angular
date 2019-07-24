@@ -30,7 +30,7 @@ export class ComputeComponent implements OnInit {
      console.log(this.pensionForm.value.PensionInformation[0].age);
   } 
 
-  compute(plotData: PlotData): void{
+  compute(plotDatan: PlotData): void{
     
     console.log("compute() körs i compute-component")
     var pensionlength = this.pensionForm.value.PensionInformation.length;
@@ -160,7 +160,7 @@ export class ComputeComponent implements OnInit {
 
    }
     dataUtbetalning.total = helpUtbetalningsData;
-    plotData.total = helpdata
+    plotData.total = helpdata;
    //console.log(dataUtbetalning)
    this.eventClicked.emit(plotData);
    this.eventClicked_2.emit(dataUtbetalning);

@@ -43,7 +43,7 @@ testPrint(data: any) {
   var isChecked = document.getElementById("myCheckbox") as HTMLInputElement;
   document.getElementById("plotDiv1").style.padding = "5px";
   var range = [];
-  
+  var length = data.total.length
   for (var i = 0; i < data.M.length; i++){
     range[i] = [data.hogtUtfall[i],data.lagtUtfall[i]];
   
@@ -66,7 +66,7 @@ testPrint(data: any) {
       followPointer: true,
     }
     })
-  } else{
+  } /*else{
     this.chart = new Chart({
       title: {
       text: 'Pension'
@@ -77,6 +77,25 @@ testPrint(data: any) {
         pointStart: data.time[0],
       }]
     })
+  }*/
+  else{
+      this.chart = new Chart({
+      plotOptions:{
+        area:{
+          stacking: 'normal'
+        }
+      },
+      title: {
+      text: 'Pension'
+      }
+      })
+      for ( i = 0; i < length; i++){
+        this.chart.addSeries({
+            type: 'area',
+            data: data.total[i].M,
+            pointStart: data.time[0],
+        },true,true)
+      }
   }
 }
 
@@ -129,22 +148,6 @@ testPrint_2(data: any) {
             pointStart: data.time[0],
         },true,true)
       }
-
-    /*this.chart_2 = new Chart({
-      plotOptions:{
-        area:{
-          stacking: 'normal'
-        }
-      },
-      title: {
-      text: 'Pension'
-    },
-      series: [{
-        type: 'area',
-        data: data.M,
-        pointStart: data.time[0],
-      }]
-    })*/
   }
 }
 

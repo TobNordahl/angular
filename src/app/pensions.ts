@@ -21,6 +21,6 @@ export class PlotData{
  V: any[];
  hogtUtfall: any[];
  lagtUtfall: any[];
- time: any[]
- total: any
+ time: any[];
+ total: undefined;
 }
