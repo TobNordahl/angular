@@ -23,7 +23,7 @@ h2{
 
 
 .minPensionDiv{
-  margin: 0px;
+  margin: 10px;
   border-radius: 10px;
   background-color: #62127c;
 }
@@ -43,7 +43,7 @@ h2{
 
 .minPensionInnerDiv{
   border-radius: 10px;
-  background-color: #62127c;
+  background-color: #fff;
   margin: 15px;
   margin-bottom: 15px;
 }
@@ -83,7 +83,7 @@ input{
   cursor: pointer;
   border-radius: 10px;
   position: absolute;
-  right: 50px
+  right: 60px
 }
 
 .switch {

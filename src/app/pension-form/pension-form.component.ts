@@ -41,7 +41,7 @@ export class PensionFormComponent implements OnInit {
   }
 testPrint(data: any) {
   var isChecked = document.getElementById("myCheckbox") as HTMLInputElement;
-
+  document.getElementById("plotDiv1").style.padding = "5px";
   var range = [];
   
   for (var i = 0; i < data.M.length; i++){
@@ -68,9 +68,6 @@ testPrint(data: any) {
     })
   } else{
     this.chart = new Chart({
-      chart: {
-        margin: [100,100,100,100],
-      },
       title: {
       text: 'Pension'
     },
@@ -87,7 +84,9 @@ testPrint(data: any) {
 testPrint_2(data: any) {
    console.log("Nu körs testPrint() från pension-form")
    
-  var isChecked = document.getElementById("myCheckbox") as HTMLInputElement;  var range = [];
+  var isChecked = document.getElementById("myCheckbox") as HTMLInputElement; 
+  document.getElementById("plotDiv2").style.padding = "5px";
+  var range = [];
   var i;
   var length = data.total.length;
   for ( i = 0; i < data.M.length; i++){
