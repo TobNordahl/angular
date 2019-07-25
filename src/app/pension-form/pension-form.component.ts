@@ -51,7 +51,12 @@ testPrint(data: any) {
   if ( isChecked.checked ){
     this.chart = new Chart({
     title: {
-      text: 'Pension'
+      text: 'Pensionens utveckling över tiden'
+    },
+    yAxis: {
+      title: {
+        text: 'Totala Tillgångar (kr)'
+      }
     },
     series: [{
       type: 'arearange',
@@ -75,8 +80,13 @@ testPrint(data: any) {
         }
       },
       title: {
-      text: 'Pension'
-      }
+      text: 'Pensionens utveckling över tiden'
+      },    
+      yAxis: {
+        title: {
+          text: 'Totala Tillgångar (kr)'
+        }
+      },
       })
       for ( i = 0; i < length; i++){
         this.chart.addSeries({
@@ -107,7 +117,12 @@ testPrint_2(data: any) {
       backgroundColor: '#fff',
     },
     title: {
-      text: 'Pension'
+      text: 'Utbetalningar per månad'
+    },
+    yAxis: {
+      title: {
+        text: 'Utbetalning (kr)'
+      }
     },
     series: [{
       type: 'arearange',
@@ -126,9 +141,14 @@ testPrint_2(data: any) {
           stacking: 'normal'
         }
       },
+    title: {
+      text: 'Utbetalningar per månad'
+    },
+    yAxis: {
       title: {
-      text: 'Pension'
+        text: 'Utbetalning (kr)'
       }
+    },
       })
       for ( i = 0; i < length; i++){
         this.chart_2.addSeries({
