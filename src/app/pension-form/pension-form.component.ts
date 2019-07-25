@@ -98,7 +98,6 @@ testPrint(data: any) {
   }
 }
 
-
 testPrint_2(data: any) {
    console.log("Nu körs testPrint() från pension-form")
    
