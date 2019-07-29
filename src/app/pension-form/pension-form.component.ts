@@ -149,6 +149,11 @@ testPrint_2(data: any) {
       }
     },
       })
+      this.chart_2.addSeries({
+          type: 'area',
+          data: data.salary,
+          pointStart: data.time[0],
+      },true,true)
       for ( i = 0; i < length; i++){
         this.chart_2.addSeries({
             type: 'area',
