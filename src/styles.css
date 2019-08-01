@@ -21,6 +21,11 @@ h2{
   line-break: 41px;    
 }
 
+p{
+  font-size: 15px;
+  line-break: 23px; 
+}
+
 
 .minPensionDiv{
   margin: 10px;
