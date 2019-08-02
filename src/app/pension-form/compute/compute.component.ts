@@ -62,7 +62,12 @@ export class ComputeComponent implements OnInit {
    
     var lifeExp = 90;
 
+    //Kontrollerar att input är siffror
     for ( j = 0; j < informationVector.length; j++){
+      var str = informationVector[j];
+      if(str.match(/^\d*[\.,\,]?\d+$/) && str.length > 0) {
+        console.log("HUHA IT WORKS")
+      }
       if (informationVector[j] == "") {
             informationVector[j] = 0;
       }
