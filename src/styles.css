@@ -23,7 +23,7 @@ h2{
 
 p{
   font-size: 15px;
-  line-break: 23px; 
+  line-break: 23px;
 }
 
 .minPensionDiv{
@@ -55,6 +55,9 @@ p{
 li{
   color:#fff;
   margin-bottom: 10px;
+}
+ul{
+  margin: 10px;
 }
 input{
     border-radius: 5px;
