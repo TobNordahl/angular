@@ -68,7 +68,7 @@ export class ComputeComponent implements OnInit {
     for ( j = 0; j < informationVector.length; j++){
       var str = informationVector[j];
       if(!str.match(/^\d*[\.,\,]?\d+$/) && str.length > 0) {
-        alert("ONLY DIGITS CAN BE AS INPUT!!!");
+        alert(str+" SOM ÄR IFYLLD ÄR EJ NÅGON SIFFRA!");
         mutex = 0;
       }
       if (informationVector[j] == "") {
