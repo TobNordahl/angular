@@ -32,6 +32,8 @@ export class ComputeComponent implements OnInit {
 
   compute(plotDatan: PlotData): void{
     
+    var mutex = 1;
+
     console.log("compute() körs i compute-component")
     var pensionlength = this.pensionForm.value.PensionInformation.length;
     
@@ -65,8 +67,9 @@ export class ComputeComponent implements OnInit {
     //Kontrollerar att input är siffror
     for ( j = 0; j < informationVector.length; j++){
       var str = informationVector[j];
-      if(str.match(/^\d*[\.,\,]?\d+$/) && str.length > 0) {
-        console.log("HUHA IT WORKS")
+      if(!str.match(/^\d*[\.,\,]?\d+$/) && str.length > 0) {
+        alert("ONLY DIGITS CAN BE AS INPUT!!!");
+        mutex = 0;
       }
       if (informationVector[j] == "") {
             informationVector[j] = 0;
@@ -146,8 +149,10 @@ export class ComputeComponent implements OnInit {
     dataUtbetalning.total = helpUtbetalningsData;
     plotData.total = helpdata;
    //console.log(dataUtbetalning)
+   if (mutex == 1){
    this.eventClicked.emit(plotData);
    this.eventClicked_2.emit(dataUtbetalning);
+   }
 
   }
 
