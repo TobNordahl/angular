@@ -43,64 +43,43 @@ export class ComputeComponent implements OnInit {
     var salaryVector = [];
 
     var i = 0;
-
+    var j;
   for (i = 0; i < pensionlength; i++){
 
     helpdata[i] = {M: [], V: [], lagtUtfall: [], hogtUtfall: [], time: [], DT: undefined}
 
-    var age = this.pensionForm.value.PensionInformation[i].age;
-    var deposit = this.pensionForm.value.PensionInformation[i].deposit;
-    var salary = this.pensionForm.value.PensionInformation[i].salary;
-    var planedPensionAge = this.pensionForm.value.PensionInformation[i].pensionAge;
-    var kapital = this.pensionForm.value.PensionInformation[i].kapital;
-    var trad = this.pensionForm.value.PensionInformation[i].trad;
-    var duration = this.pensionForm.value.PensionInformation[i].duration;
-    var risk = this.pensionForm.value.PensionInformation[i].risk;
-    var expReturn = this.pensionForm.value.PensionInformation[i].expReturn; 
+    var informationVector = [];
+
+    informationVector[0] = this.pensionForm.value.PensionInformation[i].age;
+    informationVector[1] = this.pensionForm.value.PensionInformation[i].deposit;
+    informationVector[2] = this.pensionForm.value.PensionInformation[i].salary;
+    informationVector[3] = this.pensionForm.value.PensionInformation[i].pensionAge;
+    informationVector[4] = this.pensionForm.value.PensionInformation[i].kapital;
+    informationVector[5] = this.pensionForm.value.PensionInformation[i].trad;
+    informationVector[6] = this.pensionForm.value.PensionInformation[i].duration;
+    informationVector[7] = this.pensionForm.value.PensionInformation[i].risk;
+    informationVector[8] = this.pensionForm.value.PensionInformation[i].expReturn;
+   
     var lifeExp = 90;
 
-    if (age == ""){
-      age = 0;
+    for ( j = 0; j < informationVector.length; j++){
+      if (informationVector[j] == "") {
+            informationVector[j] = 0;
+      }
+      informationVector[j] = parseFloat(informationVector[j])
     }
-    age = parseFloat(age);
 
-    if (deposit == ""){
-      deposit = 0;
-    }
-    deposit = parseFloat(deposit);
+    var age = informationVector[0];
+    var deposit = informationVector[1];
+    var salary = informationVector[2];
+    var planedPensionAge = informationVector[3];
+    var kapital = informationVector[4];
+    var trad = informationVector[5];
+    var duration = informationVector[6];
+    var risk = informationVector[7];
+    var expReturn = informationVector[8];
+    salaryVector[i] = salary;
 
-    if (planedPensionAge == ""){
-      planedPensionAge = 0;
-    }
-    parseFloat(planedPensionAge);
-
-    if (kapital == ""){
-      kapital = 0;
-    }
-    kapital = parseFloat(kapital);
-
-    if (salary == ""){
-      salary = 0;
-    }
-    salaryVector[i] = parseFloat(salary);
-
-    if (duration == ""){
-      duration = 0;
-    }
-    duration = parseFloat(duration);
-
-    if (risk == ""){
-      risk = 0;
-    }
-    risk = parseFloat(risk);
-
-    if (expReturn == ""){
-      expReturn = 0;
-    }
-    expReturn = parseFloat(expReturn);
-
-  
-    var j;
     var data = {M: kapital, V: 0, lagtUtfall: kapital, hogtUtfall: kapital}
     var dep = 0;
     helpdata[i].DT = duration;
