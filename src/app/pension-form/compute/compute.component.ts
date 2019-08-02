@@ -152,7 +152,7 @@ export class ComputeComponent implements OnInit {
     plotData.total = helpdata;
 
 
-  //mutex == 0 innebär att en ruta är ifylld fel om därmed ska data ej skickas  
+  //mutex == 0 innebär att en ruta är ifylld fel om därmed skickas ej data till plottkompnenten 
    if (mutex == 1){
    this.eventClicked.emit(plotData);
    this.eventClicked_2.emit(dataUtbetalning);
