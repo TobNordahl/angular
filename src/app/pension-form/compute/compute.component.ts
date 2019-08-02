@@ -91,8 +91,9 @@ export class ComputeComponent implements OnInit {
     var data = {M: kapital, V: 0, lagtUtfall: kapital, hogtUtfall: kapital}
     var dep = 0;
     helpdata[i].DT = duration;
-    if (trad == ""){
-      trad = 0;
+
+    //Pensionen räknas ut
+    if (trad == 0){
       iterateTime(deposit*12,data,helpdata[i],risk,expReturn,age,planedPensionAge,duration,lifeExp);
     }else{
       for(j = 0; j < lifeExp-age; j++){
@@ -109,11 +110,13 @@ export class ComputeComponent implements OnInit {
 
     helpUtbetalningsData[i] = {M: [], hogtUtfall: [], lagtUtfall: [], time: []};
 
+    //Räknar om pensionen så att den betalar ut samma värde hela tiden 
     utbetalningPerManad(helpdata[i], helpUtbetalningsData[i], age, planedPensionAge, lifeExp, trad);
    }
     
    salary = Math.max.apply(null,salaryVector)
-   //console.log(plotData.hogtUtfall)
+
+   //All data som skickas vidare till plot-pension.component ordnas till så att det ska gå att plotta
    for (j = 0; j < (lifeExp-age); j++){
      plotData.time[j] = age+j;
      plotData.M[j] = 0;
@@ -126,7 +129,6 @@ export class ComputeComponent implements OnInit {
      dataUtbetalning.lagtUtfall[j] = 0;
 
      for (i = 0; i<pensionlength; i++){
-       //console.log(i);
        plotData.M[j] = plotData.M[j]+helpdata[i].M[j];
        dataUtbetalning.M[j] = dataUtbetalning.M[j] + helpUtbetalningsData[i].M[j];
 
@@ -148,12 +150,12 @@ export class ComputeComponent implements OnInit {
    }
     dataUtbetalning.total = helpUtbetalningsData;
     plotData.total = helpdata;
-   //console.log(dataUtbetalning)
+
+
+  //mutex == 0 innebär att en ruta är ifylld fel om därmed ska data ej skickas  
    if (mutex == 1){
    this.eventClicked.emit(plotData);
    this.eventClicked_2.emit(dataUtbetalning);
    }
-
   }
-
 }
