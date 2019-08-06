@@ -103,7 +103,10 @@ testPrint(data: any) {
 
 testPrint_2(data: any) {
    console.log("Nu körs testPrint() från pension-form")
-   
+   Highcharts.setOptions({
+    colors: ['#4572A7', '#AA4643', '#89A54E', '#80699B', '#3D96AE',
+   '#DB843D', '#92A8CD', '#A47D7C', '#B5CA92']
+});
   var isChecked = document.getElementById("myCheckbox") as HTMLInputElement; 
   document.getElementById("plotDiv2").style.padding = "5px";
   var range = [];
@@ -156,6 +159,7 @@ testPrint_2(data: any) {
           type: 'area',
           data: data.salary,
           pointStart: data.time[0],
+          color: '#A9A9A9'
       },true,true)
       for ( i = 0; i < length; i++){
         this.chart_2.addSeries({
