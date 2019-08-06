@@ -39,6 +39,7 @@ export class PensionFormComponent implements OnInit {
     get pensionPoints() {
     return this.pensionForm.get('PensionInformation') as FormArray;
   }
+
 testPrint(data: any) {
   var isChecked = document.getElementById("myCheckbox") as HTMLInputElement;
   document.getElementById("plotDiv1").style.padding = "5px";
@@ -163,7 +164,6 @@ testPrint_2(data: any) {
       }
   }
 }
-
 
   exportData(){
      console.log(this.pensionForm.value.PensionInformation[0]);
