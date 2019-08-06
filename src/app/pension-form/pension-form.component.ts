@@ -43,6 +43,7 @@ export class PensionFormComponent implements OnInit {
 testPrint(data: any) {
   var isChecked = document.getElementById("myCheckbox") as HTMLInputElement;
   document.getElementById("plotDiv1").style.padding = "5px";
+  
   var range = [];
   var length = data.total.length
   for (var i = 0; i < data.M.length; i++){
@@ -97,6 +98,7 @@ testPrint(data: any) {
         },true,true)
       }
   }
+  
 }
 
 testPrint_2(data: any) {
